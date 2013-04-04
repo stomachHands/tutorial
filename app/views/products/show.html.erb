@@ -1,0 +1,19 @@
+<h1>Show Products</h1>
+<p>
+<b>Name:</b>
+<%= @product.name %>
+</p>
+<p>
+<b>Description:</b>
+<%= @product.description %>
+</p>
+<p>
+<b>Cost:</b>
+<%= number_to_currency(@product.cost, :unit => 'PhP')%>
+</p>
+<p>
+<b>Stock:</b>
+<%= @product.stock %>
+</p>
+<%= link_to 'Delete this record', @product, {:confirm => 'Are you sure?', :method => :delete } %><br/>
+<%= link_to 'Back to List of Products', products_path %>

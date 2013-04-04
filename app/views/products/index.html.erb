@@ -1,0 +1,24 @@
+<p id="notice"><%= flash[:notice] %></p>
+<h1>Listing Products</h1>
+<%= form_tag search_products_path, :method => :get do %>
+	<%= label_tag "name", "Search by product name:" %>
+	<%= text_field_tag "name" %>
+	<%= submit_tag"Search" %>
+<% end %>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Cost</th>
+		<th>Stock</th>
+	</tr>
+<% @product.each do |product| %>
+	<tr>
+		<td><%= product.name %></td>
+		<td><%= product.description %></td>
+		<td><%= number_to_currency product.cost, :unit => 'PhP' %></td>
+		<td><%= product.stock %></td>
+		<td><%= link_to'Show', product_path(product) %></td>
+	</tr>
+<% end %>
+</table>

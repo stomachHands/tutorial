@@ -1,12 +1,29 @@
 Tutorial::Application.routes.draw do
-  get "products/show"
+  #resources :invoices
+
+
+  resources :purchases do
+    resource :invoice
+  end
+
+
+  #get "products/show"
 
   resources :debts
 
-  match 'products' => 'products#index', :via => :get, :as => 'products'
-  match 'products' => 'products#search', :via => :get, :as => 'search_products'
-  match 'products/:id' => 'products#show', :via => :get, :as => 'product'
-  match 'products/:id' => 'products#destroy', :via => :delete
+  #match 'products' => 'products#index', :via => :get, :as => 'products'
+  #match 'products' => 'products#create', :via => :post
+  #match 'products/new' =>'products#new', :via => :get, :as => 'new_product' 
+  #match 'products' => 'products#search', :via => :get, :as => 'search_products'
+  #match 'products/:id' => 'products#show', :via => :get, :as => 'product'
+  #match 'products/:id' => 'products#destroy', :via => :delete
+  #match 'products/:id' => 'products#update', :via => :put
+  #match 'products/:id/edit' => 'products#edit', :via => :get, :as => 'edit_product'
+  resources :products do
+    collection do
+      get 'search'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

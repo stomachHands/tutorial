@@ -1,9 +1,16 @@
 Tutorial::Application.routes.draw do
+  resources :line_items
+
+
+  resources :suppliers
+
+
   #resources :invoices
 
 
   resources :purchases do
     resource :invoice
+    resources :line_items
   end
 
 
